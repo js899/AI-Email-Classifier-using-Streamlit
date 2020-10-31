@@ -29,12 +29,15 @@ st.bar_chart(df['Product'].value_counts(), height = 400)
 cols = []
 cols = st.multiselect("Select Columns to Preprocess", df.columns.tolist(), default=cols)
 df_to_use = df[cols]
-st.write(df_to_use.head())
+#st.write(df_to_use.head())
 if st.sidebar.button(label="Preprocess The Text"):
     df_to_use = cleantext(df_to_use)
     st.write(df_to_use.head())
     st.write(df_to_use.shape)
 
-vectorizer = st.sidebar.selectbox("Select Vectorizer", ("Word2Vec", "TF-IDF", "BERT"))
-classifier = st.sidebar.selectbox("Select Classifier Algorithm", ("LinearSVC", "GridSearchCV", "Logistic Regression"))
-#st.balloons()
+vectorizer = st.sidebar.selectbox("Select Model", ("TF-IDF", "Word2Vec", "BERT"))
+classifier = st.sidebar.selectbox("Select Learning Algorithm", ("LinearSVC", "GridSearchCV", "Logistic Regression"))
+
+clb = st.button("Celebrate!")
+if clb:
+    st.balloons()

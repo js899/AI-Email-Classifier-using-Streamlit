@@ -11,10 +11,11 @@ def cleantext(df):
     # if select == 'Mode':
     #     modify_null_values(df_to_use)
     df_to_use.dropna(axis=0, inplace = True)
-    
     df_to_use['Consumer_Complaint'] = df_to_use.Consumer_Complaint.apply(lemmatize_text)
     df_to_use['Consumer_Complaint'] = df_to_use.Consumer_Complaint.apply(rem_splchars)
-
+    #remove stopwords
+    #reduce dimentionality
+    
     return df_to_use
 
 def lemmatize_text(sen):
@@ -26,6 +27,9 @@ def rem_splchars(sen):
     sen = re.sub(r'\s+', ' ', sen, flags=re.I)
     sen = sen.lower()
     return sen
+
+# def rem_stopwords():
+#     return 
 
 # def rem_null_values(df_to_use):
 #     df_to_use = df_to_use.dropna(axis=0, inplace = True)
