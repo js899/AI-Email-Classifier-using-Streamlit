@@ -4,8 +4,8 @@ import os
 def csv_dataset(path):
     folder_list = os.listdir(path)
     with open(os.getcwd()+"/datasets/data.csv", "a+") as outfile:
-        writer = csv.writer(outfile)
-        writer.writerow(['Label', 'Email','Message'])
+        #writer = csv.writer(outfile)
+        #writer.writerow(['Label', 'Email','Message'])
         for f in folder_list:
             file_list = os.listdir(os.path.join(path, f))
             for file in file_list:
