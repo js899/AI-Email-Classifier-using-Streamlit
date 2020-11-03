@@ -19,8 +19,11 @@ except FileNotFoundError:
 
 if dataset:
 	df = pd.read_csv(dataset)
+	df.drop_duplicates(subset=None, inplace=True)
+	df.to_csv(os.getcwd()+"/datasets/data.csv", index=False)
 	st.write("### Initial Dataset")
 	st.write(df.head())
+	st.write(df.shape)
 	st.write('#### Category Count Plot')
 	st.bar_chart(df['Product'].value_counts(), height = 400)
 	# TEXT PREPROCESSING
