@@ -17,8 +17,8 @@ dataset = st.sidebar.text_input('Enter Dataset Path:')
 #         input.read()
 # except FileNotFoundError:
 #     st.sidebar.error('File not found.')
-if dataset:
-    dataset = csv_dataset(dataset)
+#dataset = csv_dataset(dataset)
+
 df = pd.read_csv(dataset)
 df.drop_duplicates(subset=None, inplace=True)
 df.to_csv(os.getcwd()+"/datasets/data.csv", index=False)
