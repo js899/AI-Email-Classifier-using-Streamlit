@@ -2,6 +2,10 @@ import csv
 import os
 
 def csv_dataset(path):
+    if not os.path.isfile(os.getcwd()+'/datasets/data.csv'):
+        with open(os.getcwd()+'/datasets/data.csv','w') as f:
+            f.write("Lable,Email,Message \n")
+
     folder_list = os.listdir(path)
     with open(os.getcwd()+"/datasets/data.csv", "a+") as outfile:
         #writer = csv.writer(outfile)
