@@ -12,22 +12,23 @@ from tfidf_lsvc import tfidf_lsvc_train
 st.title("AI Email Classifier {IITB Techfest 2020}")
 dataset = st.sidebar.text_input('Enter Dataset File Path:')
 #dataset = csv_dataset(dataset)
+
 # try:
 #     with open(dataset) as input:
 #         input.read()
 # except FileNotFoundError:
 #     st.sidebar.error('File not found.')
-if dataset:
-    dataset = csv_dataset(dataset)
 
-    df = pd.read_csv(dataset)
-    df.drop_duplicates(subset=None, inplace=True)
-    df.to_csv(os.getcwd()+"/datasets/data.csv", index=False)
-    st.write("### Initial Dataset")
-    st.write(df.head())
-    st.write(df.shape)
-    st.write('#### Category Count Plot')
-    st.bar_chart(df['Product'].value_counts(), height = 400)
+df = pd.read_csv(dataset)
+df.drop_duplicates(subset=None, inplace=True)
+df.to_csv(os.getcwd()+"/datasets/data.csv", index=False)
+st.write("### Initial Dataset")
+st.write(df.head())
+st.write(df.shape)
+st.write('#### Category Count Plot')
+st.bar_chart(df['Product'].value_counts(), height = 400)
+
+#Preprocessing Text
 	
 cols = []
 cols = st.multiselect("Select Columns to Preprocess", df.columns.tolist(), default=cols)
